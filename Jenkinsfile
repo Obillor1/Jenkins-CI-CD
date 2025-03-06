@@ -1,8 +1,5 @@
 pipeline {
     agent any
-        #environment {
-            #Build_File_Name = 'laptop.txt'
-        #}
 
     stages {
         stage('Build') {
