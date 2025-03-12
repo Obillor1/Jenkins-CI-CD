@@ -7,6 +7,13 @@ pipeline {
     }
 
     stages {
+        stage('Prepare Environment') {
+            steps {
+                sh '''
+                    sudo chown -R $(id -u):$(id -g) /var/lib/jenkins/.npm || true
+                '''
+            }
+        }
         stage('Build') {
             agent {
                 docker {
