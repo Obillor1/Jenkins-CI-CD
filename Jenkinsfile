@@ -1,12 +1,15 @@
 pipeline {
     agent any
 
+    environment {
+        NODE_OPTIONS = "--openssl-legacy-provider"
+    }
+
     stages {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:16-alpine'
-                    reuseNode true
+                    image 'node:18-alpine'
                 }
             }
             steps {
@@ -14,6 +17,7 @@ pipeline {
                     ls -la
                     node --version
                     npm --version
+                    rm -rf node_modules
                     npm ci
                     npm run build
                     ls -la
@@ -22,9 +26,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                    echo 'Test stage'
+                echo 'Test stage'
             }
         }
-        
     }
 }
+
