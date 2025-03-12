@@ -19,6 +19,7 @@ pipeline {
                     node --version
                     npm --version
                     rm -rf node_modules
+                    sudo chown -R 992:992 "/var/lib/jenkins/.npm"
                     npm install typescript@4.9.5 --save-dev
                     npm ci
                     npm run build
