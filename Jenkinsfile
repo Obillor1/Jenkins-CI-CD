@@ -18,7 +18,7 @@ pipeline {
                     ls -la
                     node --version
                     npm --version
-                    rm -rf node_modules
+                    rm -rf node_modules package-lock.json
                     npm install typescript@4.9.5 --save-dev
                     npm ci
                     npm run build
@@ -33,4 +33,3 @@ pipeline {
         }
     }
 }
-
